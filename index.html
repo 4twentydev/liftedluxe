@@ -1,16 +1,638 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifted Luxe - Brand Identity</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin-bottom: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .main-title {
+      font-size: 3.5rem;
+      background: linear-gradient(45deg, #d4af37, #ffd700, #ffed4e, #d4af37);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 4s ease infinite;
+      margin-bottom: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 30px 0;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, #d4af37, #1a1a2e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .logo-option {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      padding: 40px 20px;
+      border-radius: 15px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-option:hover {
+      border-color: #d4af37;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+    }
+
+    .logo-option::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .logo-option:hover::before {
+      left: 100%;
+    }
+
+    .logo-text {
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin: 20px 0;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-1 {
+      background: linear-gradient(45deg, #d4af37, #1a1a2e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 400;
+      position: relative;
+    }
+
+    .logo-1::after {
+      content: '↗';
+      position: absolute;
+      top: -15px;
+      right: -20px;
+      font-size: 1.5rem;
+      color: #d4af37;
+      animation: lift 2s ease-in-out infinite;
+    }
+
+    @keyframes lift {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(15deg);
+        opacity: 1;
+      }
+    }
+
+    .logo-2 {
+      color: #1a1a2e;
+      font-family: serif;
+      font-style: italic;
+      position: relative;
+    }
+
+    .logo-2::before {
+      content: '◆';
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d4af37;
+      font-size: 2rem;
+      animation: sparkle 3s infinite;
+    }
+
+    .logo-2::after {
+      content: '◆';
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d4af37;
+      font-size: 2rem;
+      animation: sparkle 3s infinite 1.5s;
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: translateY(-50%) scale(0.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.2);
+      }
+    }
+
+    .logo-3 {
+      color: #1a1a2e;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 2rem;
+    }
+
+    .logo-4 {
+      background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #1a1a2e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 100;
+      font-size: 2.5rem;
+    }
+
+    .icon-lifted {
+      font-size: 3rem;
+      color: #d4af37;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .icon-luxe {
+      font-size: 3rem;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 4px 8px rgba(26, 26, 46, 0.3));
+    }
+
+    .logo-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 15px;
+      line-height: 1.4;
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .color-card {
+      text-align: center;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .color-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .color-swatch {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .color-info {
+      padding: 15px;
+      background: white;
+    }
+
+    .color-name {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .color-hex {
+      color: #666;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    .color-usage {
+      color: #888;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+
+    .luxe-gold {
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+    }
+
+    .midnight-navy {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+
+    .champagne {
+      background: linear-gradient(135deg, #f7e7ce, #ddbf5f);
+    }
+
+    .deep-emerald {
+      background: linear-gradient(135deg, #2d5016, #4a7c59);
+    }
+
+    .platinum {
+      background: linear-gradient(135deg, #e5e4e2, #bdb8ad);
+    }
+
+    .brand-applications {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .application-card {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      padding: 25px;
+      border-radius: 15px;
+      border-left: 4px solid #d4af37;
+      transition: transform 0.3s ease;
+    }
+
+    .application-card:hover {
+      transform: translateX(5px);
+    }
+
+    .application-title {
+      color: #1a1a2e;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .mood-section {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 26, 46, 0.1));
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 30px 0;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .mood-title {
+      font-size: 2rem;
+      background: linear-gradient(45deg, #d4af37, #1a1a2e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .mood-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .keyword {
+      background: rgba(212, 175, 55, 0.1);
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: #1a1a2e;
+      font-weight: 500;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .keyword:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: scale(1.05);
+    }
+
+    .vibe-section {
+      background: #1a1a2e;
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      margin: 30px 0;
+    }
+
+    .vibe-title {
+      color: #d4af37;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .vibe-item {
+      text-align: center;
+      padding: 20px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 10px;
+    }
+
+    .vibe-icon {
+      font-size: 2rem;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .logo-text {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+  ```
+
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+  <div class="container">
+    <div class="header">
+      <h1 class="main-title">LIFTED LUXE</h1>
+      <p class="subtitle">Premium Brand Identity & Logo Concepts</p>
+    </div>
+
+    ```
+    <div class="section">
+      <h2 class="section-title">Logo Concepts</h2>
+
+      <div class="logo-grid">
+        <div class="logo-option">
+          <div class="icon-lifted">⬆️</div>
+          <div class="logo-text logo-1">LIFTED<br>LUXE</div>
+          <div class="logo-description">Modern gradient with animated lift arrow. Clean, contemporary with subtle motion
+            suggesting elevation.</div>
+        </div>
+
+        <div class="logo-option">
+          <div class="icon-luxe">👑</div>
+          <div class="logo-text logo-2">Lifted Luxe</div>
+          <div class="logo-description">Elegant italic serif with sparkling diamond accents. Premium positioning with
+            sophisticated luxury appeal.</div>
+        </div>
+
+        <div class="logo-option">
+          <div class="icon-lifted">✨</div>
+          <div class="logo-text logo-3">LIFTED<br>LUXE</div>
+          <div class="logo-description">Bold uppercase sans-serif with extended spacing. Strong, confident presence
+            perfect for premium accessories.</div>
+        </div>
+
+        <div class="logo-option">
+          <div class="icon-luxe">💫</div>
+          <div class="logo-text logo-4">Lifted Luxe</div>
+          <div class="logo-description">Ultra-light weight with gradient flow. Ethereal and elevated feeling that
+            embodies the "lifted" concept.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Color Palette</h2>
+
+      <div class="color-palette">
+        <div class="color-card">
+          <div class="color-swatch luxe-gold">Primary</div>
+          <div class="color-info">
+            <div class="color-name">Luxe Gold</div>
+            <div class="color-hex">#D4AF37</div>
+            <div class="color-usage">Logo, premium accents, luxury highlights</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch midnight-navy">Secondary</div>
+          <div class="color-info">
+            <div class="color-name">Midnight Navy</div>
+            <div class="color-hex">#1A1A2E</div>
+            <div class="color-usage">Text, backgrounds, sophisticated contrast</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch champagne">Accent 1</div>
+          <div class="color-info">
+            <div class="color-name">Champagne</div>
+            <div class="color-hex">#F7E7CE</div>
+            <div class="color-usage">Soft backgrounds, elegant highlights</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch deep-emerald">Accent 2</div>
+          <div class="color-info">
+            <div class="color-name">Deep Emerald</div>
+            <div class="color-hex">#2D5016</div>
+            <div class="color-usage">Subtle 420 nod, natural luxury element</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch platinum">Neutral</div>
+          <div class="color-info">
+            <div class="color-name">Platinum</div>
+            <div class="color-hex">#E5E4E2</div>
+            <div class="color-usage">Clean backgrounds, minimalist elements</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mood-section">
+      <h3 class="mood-title">Brand Personality</h3>
+      <p style="color: #666; font-size: 1.1rem;">Lifted Luxe represents the pinnacle of elevated style - where premium
+        meets personal</p>
+      <div class="mood-keywords">
+        <span class="keyword">Elevated</span>
+        <span class="keyword">Sophisticated</span>
+        <span class="keyword">Premium</span>
+        <span class="keyword">Luxurious</span>
+        <span class="keyword">Refined</span>
+        <span class="keyword">Exclusive</span>
+        <span class="keyword">Uplifting</span>
+        <span class="keyword">Polished</span>
+      </div>
+    </div>
+
+    <div class="vibe-section">
+      <h3 class="vibe-title">The Lifted Luxe Vibe</h3>
+      <div class="vibe-grid">
+        <div class="vibe-item">
+          <div class="vibe-icon">🔥</div>
+          <h4>Premium Lighters</h4>
+          <p>Everyday essentials elevated to luxury status</p>
+        </div>
+        <div class="vibe-item">
+          <div class="vibe-icon">✨</div>
+          <h4>Rhinestone Glamour</h4>
+          <p>Sparkling accessories that catch the light</p>
+        </div>
+        <div class="vibe-item">
+          <div class="vibe-icon">🌿</div>
+          <h4>420 Friendly</h4>
+          <p>Subtly elevated without being obvious</p>
+        </div>
+        <div class="vibe-item">
+          <div class="vibe-icon">👑</div>
+          <h4>Luxury Lifestyle</h4>
+          <p>For those who appreciate the finer things</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Brand Applications</h2>
+
+      <div class="brand-applications">
+        <div class="application-card">
+          <div class="application-title">Website Design</div>
+          <div>Dark navy backgrounds with gold accents. Clean, minimalist layout with premium photography showcasing
+            rhinestone details.</div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-title">Product Photography</div>
+          <div>Dramatic lighting against dark backgrounds. Gold and champagne lighting to enhance rhinestone sparkle and
+            luxury feel.</div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-title">Packaging</div>
+          <div>Midnight navy boxes with gold foil logo. Champagne tissue paper and platinum ribbon for unboxing
+            experience.</div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-title">Social Media</div>
+          <div>Consistent dark luxury aesthetic. Gold text overlays, lifestyle imagery with subtle emerald green plant
+            accents.</div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-title">Business Cards</div>
+          <div>Thick matte navy cardstock with gold foil logo. Minimal design with embossed texture for premium tactile
+            experience.</div>
+        </div>
+
+        <div class="application-card">
+          <div class="application-title">Email Marketing</div>
+          <div>Clean templates with champagne backgrounds. Gold call-to-action buttons and navy text for optimal
+            readability.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  ```
+
 </body>
 
-</html>
+</html>>
